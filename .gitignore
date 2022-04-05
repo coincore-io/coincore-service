@@ -1,0 +1,8 @@
+.idea/
+swagger/
+coinwallet
+routers/commentsRouter_controllers_api.go
+coinwallet.exe
+lastupdate.tmp
+upload
+static/uploads
