@@ -1,0 +1,104 @@
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- 表单头部 -->
+                <div class="box-header with-border">
+                    <div class="btn-group">
+                        <a class="btn flat btn-sm btn-default BackButton">
+                            <i class="fa fa-arrow-left"></i>
+                            返回
+                        </a>
+                    </div>
+                </div>
+                <form id="dataForm" class="form-horizontal dataForm" action="/admin/address/update" method="post" enctype="multipart/form-data">
+                    <input type="hidden" value="{{.data.Id}}" name="id" />
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="asset_id" class="col-sm-2 control-label">币种</label>
+                            <div class="col-sm-10 col-md-4">
+                                <select name="asset_id" id="asset_id" class="form-control field-select" data-placeholder="请选择币种">
+                                    <option value=""></option>
+                                    {{range $key,$item := .asset}}
+                                        <option value="{{$item.Id}}" {{if compare $.data.AssetId $item.Id }} selected {{end}}>
+                                            {{$item.Name}}
+                                        </option>
+                                    {{end}}
+                                </select>
+                            </div>
+                            <script>
+                                $('#asset_id').select2();
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <label for="device_id" class="col-sm-2 control-label">设备ID</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input maxlength="50" class="form-control" id="device_id" placeholder="请输入设备ID" name="device_id" value="{{.data.DeviceId}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="wallet_uuid" class="col-sm-2 control-label">钱包的UUID</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input maxlength="50" class="form-control" id="wallet_uuid" placeholder="请输入钱包的UUID" name="wallet_uuid" value="{{.data.WalletUuid}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="wallet_name" class="col-sm-2 control-label">钱包名称</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input maxlength="50" class="form-control" id="wallet_name" placeholder="请输入钱包名称" name="wallet_name" value="{{.data.WalletName}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">地址</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input maxlength="50" class="form-control" id="address" placeholder="请输入地址" name="address" value="{{.data.Address}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contract_addr" class="col-sm-2 control-label">合约地址</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input maxlength="50" class="form-control" id="contract_addr" placeholder="请输入合约地址" name="contract_addr" value="{{.data.ContractAddr}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="private_key" class="col-sm-2 control-label">加密的私钥</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input maxlength="50" class="form-control" id="private_key" placeholder="请输入加密的私钥" name="private_key" value="{{.data.PrivateKey}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="balance" class="col-sm-2 control-label">地址余额度</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input maxlength="50" class="form-control" id="balance" placeholder="请输入地址余额度" name="balance" value="{{.data.Balance}}">
+                            </div>
+                        </div>
+                    </div>
+                    <!--表单底部-->
+                    <div class="box-footer">
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-10 col-md-4">
+                            <div class="btn-group">
+                                <button type="submit" class="btn flat btn-info dataFormSubmit">
+                                    保存
+                                </button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="reset" class="btn flat btn-default dataFormReset">
+                                    重置
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    $("#dataForm").validate({
+
+    });
+</script>
